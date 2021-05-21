@@ -165,7 +165,7 @@ module Modis
       validate(args)
       future = persist(args[:yaml_sucks])
 
-      if future && (future == :unchanged || future.value == 'OK')
+      if future && ((future.is_a?(Symbol) && future == :unchanged) || future.value == 'OK')
         reset_changes
         @new_record = false
         true
